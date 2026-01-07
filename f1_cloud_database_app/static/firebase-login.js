@@ -6,7 +6,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDmbjZpRLc7wGlul2wxhMq6ikTXIL45qMc",
+    apiKey: "AIzaS*********************************",
     authDomain: "assignment1-451617.firebaseapp.com",
     projectId: "assignment1-451617",
     storageBucket: "assignment1-451617.firebasestorage.app",
@@ -108,4 +108,5 @@ function parseCookieToken(cookie){
 
 
     return"";
+
 };
