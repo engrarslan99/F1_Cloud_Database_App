@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Query Teams</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
+</head>
+<body>
+    <h1 style="color: #900000; font-weight: bold;">Query Teams</h1>
+    <form action="/query-team" method="post">
+        <label for="attribute">Select Attribute:</label>
+        <select name="attribute" id="attribute" required>
+            <option value="year_founded">Year Founded</option>
+            <option value="total_pole_positions">Total Pole Positions</option>
+            <option value="total_race_wins">Total Race Wins</option>
+            <option value="total_constructor_titles">Total Constructor Titles</option>
+            <option value="previous_season_position">Previous Season Position</option>
+        </select>
+
+        <label for="comparison">Select Comparison:</label>
+        <select name="comparison" id="comparison" required>
+            <option value="<">Less than (&lt;)</option>
+            <option value=">">Greater than (&gt;)</option>
+            <option value="=">Equal to (=)</option>
+        </select>
+
+        <label for="value">Enter Value:</label>
+        <input type="number" name="value" id="value" required>
+        <br><br>
+        <button type="submit" style="color: #ffffff; background-color: #900000; font-weight: bold; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">Search</button>
+    </form>
+
+    {% if results %}
+        <h2>Matching Teams:</h2>
+        <ul>
+            {% for team in results %}
+                <li>{{ team['name'] }} - {{ attribute }}: {{ team[attribute] }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <br>
+    <a href="/" 
+        style="display: inline-block; padding: 5px 10px; font-size: 16px; color: white; background-color: #900000; 
+          text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
+        Back to Home
+    </a>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Driver Comparison</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+    
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+    
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1 style="color: #900000; font-weight: bold;">Driver Comparison</h1>
+    
+    <table border="1">
+        <tr>
+            <th>Attribute</th>
+            <th>{{ driver1.name }}</th>
+            <th>{{ driver2.name }}</th>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td {% if driver1.age < driver2.age %} style="background-color: lightgreen;" {% endif %}>
+                {{ driver1.age }}
+            </td>
+            <td {% if driver2.age < driver1.age %} style="background-color: lightgreen;" {% endif %}>
+                {{ driver2.age }}
+            </td>
+        </tr>
+        <tr>
+            <td>Total Pole Positions</td>
+            <td {% if driver1.total_pole_positions > driver2.total_pole_positions %} style="background-color: lightgreen;" {% endif %}>
+                {{ driver1.total_pole_positions }}
+            </td>
+            <td {% if driver2.total_pole_positions > driver1.total_pole_positions %} style="background-color: lightgreen;" {% endif %}>
+                {{ driver2.total_pole_positions }}
+            </td>
+        </tr>
+        <tr>
+            <td>Total Race Wins</td>
+            <td {% if driver1.total_race_wins > driver2.total_race_wins %} style="background-color: lightgreen;" {% endif %}>
+                {{ driver1.total_race_wins }}
+            </td>
+            <td {% if driver2.total_race_wins > driver1.total_race_wins %} style="background-color: lightgreen;" {% endif %}>
+                {{ driver2.total_race_wins }}
+            </td>
+        </tr>
+        <tr>
+            <td>Total Points Scored</td>
+            <td {% if driver1.total_points_scored > driver2.total_points_scored %} style="background-color: lightgreen;" {% endif %}>
+                {{ driver1.total_points_scored }}
+            </td>
+            <td {% if driver2.total_points_scored > driver1.total_points_scored %} style="background-color: lightgreen;" {% endif %}>
+                {{ driver2.total_points_scored }}
+            </td>
+        </tr>
+        <tr>
+            <td>Total World Titles</td>
+            <td {% if driver1.total_world_titles > driver2.total_world_titles %} style="background-color: lightgreen;" {% endif %}>
+                {{ driver1.total_world_titles }}
+            </td>
+            <td {% if driver2.total_world_titles > driver1.total_world_titles %} style="background-color: lightgreen;" {% endif %}>
+                {{ driver2.total_world_titles }}
+            </td>
+        </tr>
+        <tr>
+            <td>Total Fastest Laps</td>
+            <td {% if driver1.total_fastest_laps > driver2.total_fastest_laps %} style="background-color: lightgreen;" {% endif %}>
+                {{ driver1.total_fastest_laps }}
+            </td>
+            <td {% if driver2.total_fastest_laps > driver1.total_fastest_laps %} style="background-color: lightgreen;" {% endif %}>
+                {{ driver2.total_fastest_laps }}
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <a href="/compare-drivers" 
+        style="display: inline-block; padding: 10px 15px; font-size: 16px; color: white; background-color: #900000; 
+          text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
+        Compare Again
+    </a>
+
+    <br>
+    <a href="/" 
+        style="display: inline-block; padding: 5px 10px; font-size: 16px; color: white; background-color: #900000; 
+          text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
+        Back to Home
+    </a>
+</body>
+</html>

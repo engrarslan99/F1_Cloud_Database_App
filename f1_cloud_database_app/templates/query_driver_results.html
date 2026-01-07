@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Query Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
+</head>
+<body>
+    <h1 style="color: #900000; font-weight: bold;">Driver Query Results</h1>
+
+    <div style="display: flex; justify-content: center;">
+        {% if drivers %}
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Team</th>
+                <th>Total Pole Positions</th>
+                <th>Total Race Wins</th>
+                <th>Total Points Scored</th>
+                <th>Total World Titles</th>
+                <th>Total Fastest Laps</th>
+            </tr>
+            {% for driver in drivers %}
+            <tr>
+                <td><a href="/driver/{{ driver.id }}">{{ driver.name }}</a></td>
+                <td>{{ driver.age }}</td>
+                <td>{{ driver.team }}</td>
+                <td>{{ driver.total_pole_positions }}</td>
+                <td>{{ driver.total_race_wins }}</td>
+                <td>{{ driver.total_points_scored }}</td>
+                <td>{{ driver.total_world_titles }}</td>
+                <td>{{ driver.total_fastest_laps }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+            <p>No drivers found matching the query.</p>
+        {% endif %}
+    </div>
+    <br>
+    <a href="/" 
+        style="display: inline-block; padding: 6px 12px; font-size: 16px; color: white; background-color: #900000; 
+          text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
+        Back to Home
+    </a>
+</body>
+</html>
+

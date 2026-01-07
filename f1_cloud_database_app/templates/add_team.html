@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Team</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
+</head>
+<body>
+    <h1 style="color: #900000; font-weight: bold;">Add Team</h1>
+    {% if error %}
+    <p style="color: red; font-weight: bold;">{{ error }}</p>
+    {% endif %}
+    <form action="/add-team" method="post">
+        <label>Team Name:</label> <input type="text" name="name" required><br/>
+        <label>Year Founded:</label> <input type="number" name="year_founded" required><br/>
+        <label>Total Pole Positions:</label> <input type="number" name="total_pole_positions" value="0"><br/>
+        <label>Total Race Wins:</label> <input type="number" name="total_race_wins" value="0"><br/>
+        <label>Total Constructor Titles:</label> <input type="number" name="total_constructor_titles" value="0"><br/>
+        <label>Previous Season Position:</label> <input type="number" name="previous_season_position" value="0"><br/>
+        <br>
+        <button type="submit" style="color: #ffffff; background-color: #900000; font-weight: bold; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">
+            Add Team
+        </button>
+    </form>
+    <br>
+    <a href="/" 
+        style="display: inline-block; padding: 5px 10px; font-size: 16px; color: white; background-color: #900000; 
+          text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
+        Back to Home
+    </a>
+</body>
+</html>

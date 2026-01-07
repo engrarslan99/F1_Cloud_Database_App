@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Driver</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
+</head>
+<body>
+    <h1 style="color: #900000; font-weight: bold;">Add Driver</h1>
+    {% if error %}
+    <p style="color: red; font-weight: bold;">{{ error }}</p>
+    {% endif %}
+    <form action="/add-driver" method="post">
+        <label>Name:</label> <input type="text" name="name" required><br/>
+        <label>Age:</label> <input type="number" name="age" required><br/>
+        <label>Team:</label> <input type="text" name="team" required><br/>
+        <label>Total Pole Positions:</label> <input type="number" name="total_pole_positions" value="0"><br/>
+        <label>Total Race Wins:</label> <input type="number" name="total_race_wins" value="0"><br/>
+        <label>Total Points Scored:</label> <input type="number" name="total_points_scored" value="0"><br/>
+        <label>Total World Titles:</label> <input type="number" name="total_world_titles" value="0"><br/>
+        <label>Total Fastest Laps:</label> <input type="number" name="total_fastest_laps" value="0"><br/>
+        <br>
+        <button type="submit" style="color: #ffffff; background-color: #900000; font-weight: bold; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">
+            Add Driver
+        </button>
+    </form>
+    <br>
+    <a href="/" 
+        style="display: inline-block; padding: 5px 10px; font-size: 16px; color: white; background-color: #900000; 
+          text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
+        Back to Home
+    </a>
+</body>
+</html>

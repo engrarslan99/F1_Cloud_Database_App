@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formula 1 Database</title>
+        <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
+        <script type="module" src="{{ url_for('static', path='/firebase-login.js') }}"></script>
+    </head>
+    <body>
+        <h1 style="color: #900000; font-weight: bold;">Formula 1 Application</h1>
+
+        <div id="login-box">
+            Email: <input type="email" id="email"><br/>
+            Password: <input type="password" id="password"><br/>
+            <button id="login">Login</button>
+            <button id="sign-up">Sign Up</button>
+        </div>
+        
+        {% if user_token %}
+            <p><span style="color: #900000; font-weight: bold;">Logged in as:</span> {{ user_token.email }}</p>
+        {% else %}
+            <p style="color: #900000; font-weight: bold;">You are not logged in.</p>
+        {% endif %}
+
+        <button id="sign-out" hidden style="color: #ffffff; background-color: #070404; font-weight: bold; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">
+            Sign Out
+        </button>
+        <br><br>
+        <nav>
+            {% if user_token %}
+                <a href="/add-driver" 
+                style="display: inline-block; padding: 8px 10px; font-size: 16px; color: white; background-color: #900000; 
+                text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
+                Add Driver</a> |
+                <a href="/add-team" 
+                style="display: inline-block; padding: 8px 10px; font-size: 16px; color: white; background-color: #900000; 
+                text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
+                Add Team</a> |
+            {% endif %}
+                <a href="/query-driver" 
+                style="display: inline-block; padding: 8px 10px; font-size: 16px; color: white; background-color: #900000; 
+                text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
+                Query Driver</a> |
+                <a href="/query-team" 
+                style="display: inline-block; padding: 8px 10px; font-size: 16px; color: white; background-color: #900000; 
+                text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
+                Query Team</a> |
+                <a href="/compare-drivers" 
+                style="display: inline-block; padding: 8px 10px; font-size: 16px; color: white; background-color: #900000; 
+                text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
+                Compare Drivers</a> |
+                <a href="/compare-teams" 
+                style="display: inline-block; padding: 8px 10px; font-size: 16px; color: white; background-color: #900000; 
+                text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
+                Compare Teams</a>
+
+        </nav>
+
+        <h2 style="color: #900000;">Drivers:</h2>
+        {% for driver in drivers %}
+            <p>
+                <a href="/driver/{{ driver['id'] }}">{{ driver['name'] }}</a> |
+                Age: {{ driver['age'] }} | Team: {{ driver['team'] }}
+            </p>
+        {% endfor %}
+
+        <h2 style="color: #900000;">Teams:</h2>
+        {% for team in teams %}
+            <p>
+                <a href="/team/{{ team['id'] }}">{{ team['name'] }}</a> |
+                Founded: {{ team['year_founded'] }}
+            </p>
+        {% endfor %}
+
+    </body>
+</html>

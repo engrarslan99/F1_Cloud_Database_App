@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Team Comparison</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: #900000; font-weight: bold;">Team Comparison</h1>
+    
+    <table border="1">
+        <tr>
+            <th>Attribute</th>
+            <th>{{ team1.name }}</th>
+            <th>{{ team2.name }}</th>
+        </tr>
+        <tr>
+            <td>Year Founded</td>
+            <td {% if team1.year_founded < team2.year_founded %} style="background-color: lightgreen;" {% endif %}>
+                {{ team1.year_founded }}
+            </td>
+            <td {% if team2.year_founded < team1.year_founded %} style="background-color: lightgreen;" {% endif %}>
+                {{ team2.year_founded }}
+            </td>
+        </tr>
+        <tr>
+            <td>Total Pole Positions</td>
+            <td {% if team1.total_pole_positions > team2.total_pole_positions %} style="background-color: lightgreen;" {% endif %}>
+                {{ team1.total_pole_positions }}
+            </td>
+            <td {% if team2.total_pole_positions > team1.total_pole_positions %} style="background-color: lightgreen;" {% endif %}>
+                {{ team2.total_pole_positions }}
+            </td>
+        </tr>
+        <tr>
+            <td>Total Race Wins</td>
+            <td {% if team1.total_race_wins > team2.total_race_wins %} style="background-color: lightgreen;" {% endif %}>
+                {{ team1.total_race_wins }}
+            </td>
+            <td {% if team2.total_race_wins > team1.total_race_wins %} style="background-color: lightgreen;" {% endif %}>
+                {{ team2.total_race_wins }}
+            </td>
+        </tr>
+        <tr>
+            <td>Total Constructor Titles</td>
+            <td {% if team1.total_constructor_titles > team2.total_constructor_titles %} style="background-color: lightgreen;" {% endif %}>
+                {{ team1.total_constructor_titles }}
+            </td>
+            <td {% if team2.total_constructor_titles > team1.total_constructor_titles %} style="background-color: lightgreen;" {% endif %}>
+                {{ team2.total_constructor_titles }}
+            </td>
+        </tr>
+        <tr>
+            <td>Previous Season Finish</td>
+            <td {% if team1.previous_season_position < team2.previous_season_position %} style="background-color: lightgreen;" {% endif %}>
+                {{ team1.previous_season_position }}
+            </td>
+            <td {% if team2.previous_season_position < team1.previous_season_position %} style="background-color: lightgreen;" {% endif %}>
+                {{ team2.previous_season_position }}
+            </td>
+        </tr>
+        
+    </table>
+
+    <br>
+    <a href="/compare-teams" 
+        style="display: inline-block; padding: 10px 15px; font-size: 16px; color: white; background-color: #900000; 
+          text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
+        Compare Again
+    </a>
+
+    <br>
+    <a href="/" 
+        style="display: inline-block; padding: 5px 10px; font-size: 16px; color: white; background-color: #900000; 
+          text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
+        Back to Home
+    </a>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Query Results - Teams</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
+</head>
+<body>
+    <h1 style="color: #900000; font-weight: bold;">Team Query Results</h1>
+
+    <div style="display: flex; justify-content: center;" >
+        {% if teams %}
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Year Founded</th>
+                <th>Total Pole Positions</th>
+                <th>Total Race Wins</th>
+                <th>Total Constructor Titles</th>
+                <th>Previous Season Position</th>
+            </tr>
+            {% for team in teams %}
+            <tr>
+                <td><a href="/team/{{ team.id }}">{{ team.name }}</a></td>
+                <td>{{ team.year_founded }}</td>
+                <td>{{ team.total_pole_positions }}</td>
+                <td>{{ team.total_race_wins }}</td>
+                <td>{{ team.total_constructor_titles }}</td>
+                <td>{{ team.previous_season_position }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No teams found matching the query.</p>
+    {% endif %}
+
+    </div>
+    <br>
+    <a href="/" 
+        style="display: inline-block; padding: 5px 10px; font-size: 16px; color: white; background-color: #900000; 
+          text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
+        Back to Home
+    </a>
+</body>
+</html>
