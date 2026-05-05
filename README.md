@@ -3,7 +3,7 @@
 
 **Overview**
 
-This project was developed as part of my Master’s in Computer Science for the Cloud Platforms & Applications module.
+This project was developed as part of my Masters in Computer Science for the Cloud Platforms & Applications module.
 
 It is a cloud-based web application that stores and manages Formula 1 drivers and teams using Google App Engine and Google Firestore.
 
