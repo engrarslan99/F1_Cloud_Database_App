@@ -1,88 +1,142 @@
-**F1 Cloud Database Application**
+# F1 Database App 🏎️
+
+A full-stack **PaaS web application** built on **Google App Engine** that stores and manages **Formula 1 driver and team data**. It functions similarly to Wikipedia. Authenticated users can create, edit, and delete records, while public users can browse and query freely. Built with **Python** and **Firebase** as part of **MSc Computer Science at Griffith College Dublin**.
+
+---
+
+## Features
+
+### 🔐 Authentication
+- **Firebase-based** login and logout system
+- **Role-based access** logged-in users can modify data, logged-out users can only view and query
+
+### 🏁 Driver Management
+- **Add, edit, and delete** F1 drivers
+- Each driver stores:
+  - **Age**
+  - **Total Pole Positions**
+  - **Total Race Wins**
+  - **Total Points Scored**
+  - **Total World Titles**
+  - **Total Fastest Laps**
+  - **Current Team**
+- **Duplicate driver names are prevented**
+- Each driver displayed as a **clickable link** leading to their individual profile page
+
+### 🏢 Team Management
+- **Add, edit, and delete** F1 teams
+- Each team stores:
+  - **Year Founded**
+  - **Total Pole Positions**
+  - **Total Race Wins**
+  - **Total Constructor Titles**
+  - **Finishing Position in Previous Season**
+- **Duplicate team names are prevented**
+- Each team displayed as a **clickable link** leading to their individual profile page
+
+### 🔍 Query & Filtering
+- Filter drivers or teams by **any single attribute**
+- Supports three comparison types: **greater than**, **less than**, and **equal to**
+- Query forms accessible to **both logged-in and logged-out users**
+
+### ⚖️ Comparison Tool
+- Compare **any two drivers** side by side in a 2-column stats table
+  - Better stat highlighted in **green**
+  - For all stats except Age: **higher number wins**
+  - For Age: **lower number wins**
+- Compare **any two teams** side by side in a 2-column stats table
+  - Better stat highlighted in **green**
+  - For Finishing Position and Year Founded: **lower number wins**
+  - For all other stats: **higher number wins**
+- Comparison **cannot be triggered** with 0 or 1 selections
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| **Backend** | Python (Google App Engine) |
+| **Authentication** | Firebase Authentication |
+| **Database** | Cloud Firestore (NoSQL) |
+| **Frontend** | HTML, CSS, JavaScript |
+| **Auth Library** | firebase-login.js |
+
+---
+
+## 🗄️ Data Model
+
+```
+Firestore
+ ├── drivers (collection)
+ │     └── driver document
+ │           ├── name
+ │           ├── age
+ │           ├── pole_positions
+ │           ├── race_wins
+ │           ├── points_scored
+ │           ├── world_titles
+ │           ├── fastest_laps
+ │           └── team
+ │
+ └── teams (collection)
+       └── team document
+             ├── name
+             ├── year_founded
+             ├── pole_positions
+             ├── race_wins
+             ├── constructor_titles
+             └── previous_season_position
+```
+
+> **Note:** No Firestore indexes are used in this project.
+
+---
+
+## 🚀 How to Run
+
+### Prerequisites
+- **Python 3.x**
+- **Google Cloud SDK** installed
+- **Firebase project** set up
+
+### Steps
+
+1. **Clone the repository**
+
+2. **Set up Firebase**
+   - Go to [Firebase Console](https://console.firebase.google.com)
+   - Create a new project
+   - Enable **Authentication** (Email/Password)
+   - Enable **Firestore Database**
+   - Copy your Firebase config into the project
+
+3. **Run locally**
+   ```bash
+   dev_appserver.py app.yaml
+   ```
+
+4. **Deploy to Google App Engine**
+   ```bash
+   gcloud app deploy
+   ```
 
 
-**Overview**
+---
 
-This project was developed as part of my Masters in Computer Science for the Cloud Platforms & Applications module.
+## 🎓 Academic Context
 
-It is a cloud-based web application that stores and manages Formula 1 drivers and teams using Google App Engine and Google Firestore.
+| Detail | Info |
+|--------|------|
+| **Institution** | Griffith College Dublin |
+| **Programme** | MSc Computer Science |
+| **Module** | Cloud Platforms & Applications |
+| **Assignment** | 1 of 3 |
+| **Year** | 2025 |
 
+---
 
+## 👨‍💻 Author
 
-**## Features**
-
-* User authentication using Firebase login
-* Add, edit, delete F1 drivers and teams
-* Query drivers and teams using comparison filters
-* Compare two drivers or two teams with visual highlights
-* Role-based access (logged-in vs logged-out users)
-
-
-
-**## Technologies Used**
-
-- **Backend:** Python
-- **Frontend:** HTML, CSS, JavaScript
-- **Cloud Platform:** Google App Engine
-- **Database:** Google Firestore
-- **Authentication:** Firebase Authentication
-
-
-
-**## Application Structure**
-
-* Backend handles data storage and business logic
-* Firestore collections for drivers and teams
-* Separate pages for create, edit, view, query, and compare operations
-
-
-
-**Security & Credentials:**
-
-This project uses Google Cloud service accounts and Firebase configuration files.
-
-**⚠️ For security reasons:**
-
-* Service account credentials
-* API keys
-* Secret configuration files
-are NOT included in this repository.
-
-
-
-**To run this project locally or deploy it:**
-
-1. Create a Google Cloud service account
-2. Download the credentials JSON file
-3. Set the GOOGLE\_APPLICATION\_CREDENTIALS environment variable
-4. Configure Firebase Authentication in your Google Cloud project
-
-This follows industry best practices for cloud security.
-
-
-
-**How to Run (High-Level)**
-
-* Clone the repository
-* Install required dependencies using requirements.txt
-* Configure Google Cloud and Firebase credentials
-* Deploy the application using Google App Engine
-
-Note: This project was originally deployed on Google Cloud as part of academic coursework.
-
-
-
-**Key Learning Outcomes:**
-
-* Deploying applications using a Platform as a Service (PaaS)
-* Designing and querying NoSQL databases
-* Implementing authentication and access control
-* Structuring scalable cloud-based web applications
-* Applying secure credential management practices
-
-
-**Author:**
-
-Muhammad Arslan Ashfaq <br>
-Master’s in Computer Science
-| Software Developer | Cybersecurity Enthusiast
+**Arslan Ashfaq**  
+[LinkedIn](https://www.linkedin.com/in/arslanashfaq99) · [GitHub](https://github.com/engrarslan99)
