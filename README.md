@@ -131,7 +131,6 @@ Firestore
 | **Institution** | Griffith College Dublin |
 | **Programme** | MSc Computer Science |
 | **Module** | Cloud Platforms & Applications |
-| **Assignment** | 1 of 3 |
 | **Year** | 2025 |
 
 ---
